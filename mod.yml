@@ -1,0 +1,8 @@
+title: Ultra Hardcore Plus
+description: Same as Ultra Hardcore, but without the -1HP cap. All damage taken is fully lost.
+assets:
+#Lua Scripts
+- name: scripts/UltraHardcorePlus.lua
+  method: copy
+  source:
+  - name: UltraHardcorePlus.lua
