@@ -36,6 +36,7 @@ function Events(M,B,E) --Check for Map, Btl, and Evt
 end
 
 function Cheats()
+print(Dead)
 	if CurrentHP < ReadByte(Slot1+0x4) then
 		WriteByte(Slot1+0x0, CurrentHP)
 		WriteByte(Slot1+0x4, CurrentHP)
@@ -48,8 +49,9 @@ function Cheats()
 		WriteByte(Slot1+0x0, 150)
 	end
 WriteByte(0x24BC8D6, 200) -- Defense Stat
-	if ReadByte(Slot1+0x4) == 0 then
+	if ReadByte(Slot1+0x0) == 0 then
 		Dead = 1
+	else Dead = 0
 	end
 	if Dead == 1 and ReadByte(Slot1+0x0) > 5 then
 		WriteByte(Slot1+0x4, ReadByte(Slot1+0x4) - 1)
