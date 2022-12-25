@@ -36,7 +36,6 @@ function Events(M,B,E) --Check for Map, Btl, and Evt
 end
 
 function Cheats()
-print(Dead)
 	if CurrentHP < ReadByte(Slot1+0x4) then
 		WriteByte(Slot1+0x0, CurrentHP)
 		WriteByte(Slot1+0x4, CurrentHP)
