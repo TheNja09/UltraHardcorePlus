@@ -1,5 +1,5 @@
 title: Ultra Hardcore Plus
-description: Same as Ultra Hardcore, but without the -1HP cap. All damage taken is fully lost. HP Bonuses do not do anything. Dying will reset your HP to 5.
+description: Same as UltraHardcore, but without the -1HP cap, all damage taken is fully lost, HP Bonuses do not do anything, and dying will drain your HP to 5.
 assets:
 #Lua Scripts
 - name: scripts/UltraHardcorePlus.lua
