@@ -1,4 +1,5 @@
 Dead = 0
+local CurrentHP = 150
 function _OnFrame()
     World = ReadByte(Now + 0x00)
     Room = ReadByte(Now + 0x01)
@@ -35,11 +36,7 @@ function Events(M,B,E) --Check for Map, Btl, and Evt
 end
 
 function Cheats()
-local CurrentHP = ReadByte(Slot1+0x4)
-	if ReadByte(Slot1+0x4) > CurrentHP then
-		WriteByte(Slot1+0x4, CurrentHP)
-		WriteByte(Slot1+0x0, CurrentHP)
-	elseif ReadByte(Slot1+0x4) < CurrentHP then
+	if CurrentHP > ReadByte(Slot1+0x4) then
 		CurrentHP = ReadByte(Slot1+0x4)
 	end
 	if ReadShort(Now+0) == 0x2002 and ReadShort(Now+8) == 0x01 then -- Sets your HP in the first room of rando
