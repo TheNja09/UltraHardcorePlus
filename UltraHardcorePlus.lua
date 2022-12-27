@@ -1,6 +1,5 @@
 SavedHP = 150
 Ready = 0
-DrainComplete = 0
 function _OnFrame()
     World = ReadByte(Now + 0x00)
     Room = ReadByte(Now + 0x01)
