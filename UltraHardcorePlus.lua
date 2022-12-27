@@ -1,5 +1,6 @@
 SavedHP = 150
 Ready = 0
+DrainComplete = 0
 function _OnFrame()
     World = ReadByte(Now + 0x00)
     Room = ReadByte(Now + 0x01)
@@ -42,24 +43,29 @@ function Cheats()
 		Ready = 0
 		SavedHP = 150
 	end
-    if SavedHP < ReadByte(Slot1+0x4) then
-            WriteByte(Slot1+0x0, SavedHP)
-            WriteByte(Slot1+0x4, SavedHP)
-    end
-	if ReadByte(Slot1+0x0) == 0 then
+	if ReadByte(Slot1+0x0) == 0 and Ready == 0 then
 		Ready = 1
+		SavedHP = 10
 		WriteByte(Slot1+0x4, 10)
-	end
-	if ReadByte(Slot1+0x0) < ReadByte(Slot1+0x4) and Ready ~= 1 then
-		WriteByte(Slot1+0x4, ReadByte(Slot1+0x0))
-		SavedHP = ReadByte(Slot1+0x4)
-	end
-WriteByte(0x24BC8D6, 200) -- Defense Stat 
-	if Ready == 1 and ReadByte(Slot1+0x4) < 10 and ReadByte(Slot1+0x0) > 0 then
+	elseif Ready == 1 and ReadByte(Slot1+0x4) > 10 then
 		WriteByte(Slot1+0x4, ReadByte(Slot1+0x4) - 1)
-		SavedHP = ReadByte(Slot1+0x4)
-	elseif Ready == 1 and ReadByte(Slot1+0x0) > 0 and ReadByte(Slot1+0x4) >= 10 then
+		WriteByte(Slot1+0x0, ReadByte(Slot1+0x4))
+	elseif Ready == 1 and ReadByte(Slot1+0x0) == 10 and ReadByte(Slot1+0x4) == 10 then
 		SavedHP = ReadByte(Slot1+0x4)
 		Ready = 0
+	elseif ReadByte(Slot1+0x0) < ReadByte(Slot1+0x4) and Ready ~= 1 then
+		WriteByte(Slot1+0x4, ReadByte(Slot1+0x0))
+		SavedHP = ReadByte(Slot1+0x4)
+	elseif Ready == 1 and ReadByte(Slot1+0x0) < ReadByte(Slot1+0x4) and ReadByte(Slot1+0x0) > 0 then
+		WriteByte(Slot1+0x4, ReadByte(Slot1+0x0))
+		SavedHP = ReadByte(Slot1+0x4)
+		Ready = 0
+	elseif SavedHP < ReadByte(Slot1+0x4) and Ready == 0 then
+		WriteByte(Slot1+0x0, SavedHP)
+		WriteByte(Slot1+0x4, SavedHP)
 	end
+WriteByte(0x24BC8D6, 200) -- Defense Stat 
+--WriteByte(Slot1+0x4, 150)
+--WriteByte(Slot1+0x0, 150)
+--print(SavedHP)
 end
