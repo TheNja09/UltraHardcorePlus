@@ -51,7 +51,7 @@ function Cheats()
 		WriteByte(Slot1+0x4, 10)
 	end
 	if ReadByte(Slot1+0x0) < ReadByte(Slot1+0x4) and Ready ~= 1 then
-		WriteByte(Slot1+0x4, ReadByte(Slot1+0x0)
+		WriteByte(Slot1+0x4, ReadByte(Slot1+0x0))
 		SavedHP = ReadByte(Slot1+0x4)
 	end
 WriteByte(0x24BC8D6, 200) -- Defense Stat 
