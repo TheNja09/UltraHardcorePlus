@@ -65,7 +65,4 @@ function Cheats()
 		WriteByte(Slot1+0x4, SavedHP)
 	end
 WriteByte(0x24BC8D6, 200) -- Defense Stat 
---WriteByte(Slot1+0x4, 150)
---WriteByte(Slot1+0x0, 150)
---print(SavedHP)
 end
